@@ -19,10 +19,18 @@ import string
 import matplotlib.pyplot as plt
 
 import seaborn as sns
+
 from sklearn.model_selection import train_test_split
+
 from collections import Counter
+
 from sklearn.linear_model import LinearRegression, LogisticRegression
+
 from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score, mean_squared_error
+
 from nltk.corpus import stopwords
+
 import chardet
+
 import nltk
+
