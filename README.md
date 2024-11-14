@@ -1,6 +1,7 @@
 # Import the necessary libraries
 
 #Pandas used to data analysis. It provides DataFrame and Series structures for easy data reading, cleaning and analysis.
+
 import pandas as pd 
 
 #Library for scientific computing, providing multi-dimensional array objects, matrix operations, linear algebra functions, and more.
