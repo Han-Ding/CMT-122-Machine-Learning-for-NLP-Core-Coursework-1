@@ -12,6 +12,7 @@ from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, r
 from nltk.corpus import stopwords
 import chardet
 import nltk
+from sklearn.preprocessing import StandardScaler
 
 # Download the list of deactivated words
 # nltk.download('stopwords')
@@ -83,25 +84,23 @@ y_pred_reg = regressor.predict(X_test)
 rmse = np.sqrt(mean_squared_error(y_test, y_pred_reg))
 print(f'Root mean square error of regression model(RMSE):{rmse}')
 
-# 步骤 4：训练分类模型（逻辑回归）
+# Training classification models (logistic regression)
 classifier = LogisticRegression(max_iter=1000)
-# 归一化特征数据以提升模型收敛性能
-from sklearn.preprocessing import StandardScaler
+
+# Normalising feature data to improve model convergence performance
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
-# 使用标准化后的数据进行模型训练
+# Model training using normalised data
 classifier.fit(X_train_scaled, y_train)
 
-# 使用分类模型进行预测
+# Prediction using classification models
 y_pred_class = classifier.predict(X_test_scaled)
 
 # Calculate the confusion matrix
 conf_matrix = confusion_matrix(y_test, y_pred_class)
 print(f'confusion matrix: \n{conf_matrix}')
-
-
 
 # Calculation of accuracy, macro-average precision, recall and F1 score for classification models
 accuracy = accuracy_score(y_test, y_pred_class)
