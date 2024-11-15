@@ -178,8 +178,6 @@ X_test_scaled = scaler.transform(X_test)
 **_Note: This step is also very memorable, if you simply refer to the classification model and train it you will get the error ‘sklearn.exceptions.NotFittedError’. 
 This is because the model is not converging well to find the optimal solution, and it is true that when I did not increase the number of iterations ‘max_iter=1000’, the accuracy was only 0.93, but after increasing the number of iterations, the accuracy reached 0.95. However, it will also increase the data computation, and there is a risk of overfitting, which will require cross-validation and adjusting the regularisation parameter to correct._**
 
-Translated with www.DeepL.com/Translator (free version)._**
-
 ```
 # Model training using normalised data
 classifier.fit(X_train_scaled, y_train)
