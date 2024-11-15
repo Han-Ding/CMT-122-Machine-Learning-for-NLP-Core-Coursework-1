@@ -49,6 +49,8 @@ and a classification model) and check their performance.**
 
 - **nltk**: A common library for natural language processing, containing a rich set of tools and datasets.
 
+- **StandardScaler**: Improving the convergence performance of logistic regression models. 'from sklearn.preprocessing' 
+
 ---
 
 ## _**Second step: Load dataset**._
@@ -166,11 +168,24 @@ print(f'Root mean square error of regression model（RMSE）：{rmse}')
 
 ```
 # Training classification models (logistic regression)
-classifier = LogisticRegression()
-classifier.fit(X_train, y_train)
+classifier = LogisticRegression(max_iter=1000)
+
+# Normalising feature data to improve model convergence performance
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+```
+**_Note: This step is also very memorable, if you simply refer to the classification model and train it you will get the error ‘sklearn.exceptions.NotFittedError’. 
+This is because the model is not converging well to find the optimal solution, and it is true that when I did not increase the number of iterations ‘max_iter=1000’, the accuracy was only 0.93, but after increasing the number of iterations, the accuracy reached 0.95. However, it will also increase the data computation, and there is a risk of overfitting, which will require cross-validation and adjusting the regularisation parameter to correct._**
+
+Translated with www.DeepL.com/Translator (free version)._**
+
+```
+# Model training using normalised data
+classifier.fit(X_train_scaled, y_train)
 
 # Prediction using classification models
-y_pred_class = classifier.predict(X_test)
+y_pred_class = classifier.predict(X_test_scaled)
 
 # Calculate the confusion matrix
 conf_matrix = confusion_matrix(y_test, y_pred_class)
