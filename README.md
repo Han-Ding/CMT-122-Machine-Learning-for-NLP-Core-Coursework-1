@@ -4,7 +4,7 @@
 
 ## First step : Import the necessary libraries
 
-#Pandas used to data analysis. It provides DataFrame and Series structures for easy data reading, cleaning and analysis.
+##Pandas used to data analysis. It provides DataFrame and Series structures for easy data reading, cleaning and analysis.
 
 import pandas as pd 
 
